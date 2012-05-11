@@ -68,10 +68,10 @@ class Camera(object):
 
 if __name__ == '__main__':
   c = Camera()
-  print c.e
+  print(c.e)
   c.xPosSet(-2)
-  print c.e
+  print(c.e)
   c.nudgePos(-1, 4, 4)
-  print c.e
+  print(c.e)
   c.gSet(1,1,1)
-  print c.g
+  print(c.g)

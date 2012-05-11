@@ -106,4 +106,4 @@ if __name__ == '__main__':
     assert x == Vector(2, 4, 6)
     x.normalize()
     print (x)
-    print (x.magnitude)
+    print((x.magnitude))
