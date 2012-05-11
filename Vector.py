@@ -10,7 +10,10 @@ class Vector(object):
             if (type(indata[0]) == type([])) or \
                (type(indata[0]) == type(())):
                 indata = indata[0]
-        self.data = indata
+        self.data = list(indata)
+        self.setup()
+
+    def setup(self):
         self.magnitude = math.sqrt(sum([math.pow(x, 2) for x in self.data]))
 
         # If the vector has greater than three dimensions, break it up.
@@ -20,6 +23,7 @@ class Vector(object):
             self.z = self.data[2]
             if (len(self.data)  == 4):
                 self.h = self.data[3]
+
 
     def __repr__(self):
         return self.__str__()
@@ -60,6 +64,17 @@ class Vector(object):
         result = " ".join([str(x).center(4) for x in self.data])
         return result
 
+    def xSet(self, val):
+        self.data[0] = val
+        self.setup()
+
+    def ySet(self, val):
+        self.data[1] = val
+        self.setup()
+
+    def zSet(self, val):
+        self.data[2] = val
+        self.setup()
 
     def dot(self, other):
         # This will provide the dot product of the vector.
@@ -76,10 +91,19 @@ class Vector(object):
         newZ = (self.x * other.y) - (self.y * other.x)
         return Vector(newX, newY, newZ)
 
+    def normalize(self):
+        mag = self.magnitude
+        self.xSet(float(self.x / mag))
+        self.ySet(float(self.y / mag))
+        self.zSet(float(self.z / mag))
+        return self
+
 # Test cases:
 if __name__ == '__main__':
     x = Vector(1, 2, 3)
     assert round(x.magnitude) == 4.0
     x = x * 2
     assert x == Vector(2, 4, 6)
+    x.normalize()
     print x
+    print x.magnitude

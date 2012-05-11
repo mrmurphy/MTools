@@ -49,6 +49,12 @@ class Matrix(Vector):
         return self.__str__()
         # return repr(self.rows)
 
+    def transpose(self):
+        rowsTemp = self.rows
+        self.rows = self.cols
+        self.cols = rowsTemp
+        return self
+
 if __name__ == '__main__':
     # Test cases.
     x = Matrix(
@@ -56,3 +62,10 @@ if __name__ == '__main__':
             [4,5,6],
             [7,8,9])
     print x
+    print x.transpose()
+    y = Matrix(
+            [1,2],
+            [3,4],
+            [5,6])
+    print y
+    print "\n" + y.transpose().__str__()
