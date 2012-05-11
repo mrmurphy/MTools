@@ -1,6 +1,6 @@
 # A quick camera class to store the values needed to represent a
 # camera in this pipeline.
-from Vector import Vector
+from MTools.Vector import Vector
 
 class Camera(object):
     def __init__(self):

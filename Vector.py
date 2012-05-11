@@ -105,5 +105,5 @@ if __name__ == '__main__':
     x = x * 2
     assert x == Vector(2, 4, 6)
     x.normalize()
-    print x
-    print x.magnitude
+    print (x)
+    print (x.magnitude)
