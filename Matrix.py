@@ -10,7 +10,7 @@ from MTools.Point import Point
 
 class Matrix(Vector):
     def __init__(self, *indata):
-        self.rows = map(Vector, indata)
+        self.rows = list(map(Vector, indata))
         self.cols = []
 
         numCols = len(self.rows[0])
