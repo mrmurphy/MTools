@@ -4,16 +4,16 @@
 # Requires vector class, by same author.
 # Only matricies with vectors of equal lengths are functional.
 # Anything else will break.
-from MTools.Vector import Vector
+from MTools.Vector import Vector as MVector
 from MTools.Point import Point
 
 
-class Matrix(Vector):
+class Matrix(MVector):
     def __init__(self, *indata):
-        if(type(indata[0]) == type(Vector())):
+        if(type(indata[0]) == type(MVector())):
             self.rows = indata
         else:
-            self.rows = [Vector(x) for x in indata]
+            self.rows = [MVector(x) for x in indata]
         self.cols = []
 
         numCols = len(self.rows[0])
@@ -21,7 +21,7 @@ class Matrix(Vector):
             vals = []
             for j in self.rows:
                 vals.append(j[i])
-            self.cols.append(Vector(vals))
+            self.cols.append(MVector(vals))
 
     def __mul__(self, other):
         # This will multiply one matrix by anther.
@@ -30,11 +30,11 @@ class Matrix(Vector):
         result = []
         # If the other is a vector, just take the dot product of each 
         # row in self with the vector.
-        if (type(other) == type(Vector())) or \
+        if (type(other) == type(MVector())) or \
             (type(other) == type(Point(0, 0, 0))):
             for i in range(len(self.rows)):
                 result.append(self.rows[i].dot(other))
-            return Vector(result)
+            return MVector(result)
         else:
             # Compute the product if both are matrices.
             for i in range(len(self.rows)):
