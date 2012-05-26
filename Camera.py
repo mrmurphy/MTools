@@ -1,21 +1,28 @@
 # A quick camera class to store the values needed to represent a
 # camera in this pipeline.
 from Vector import Vector
+import math
 
 class Camera(object):
-    def __init__(self):
+    def __init__(self, width=800, height=600):
       self.e = Vector(0, 0, 0)
       self.g = Vector(0, 0, -1)
       self.t = Vector(0, 1, 0)
       self.n = -1
       self.f = -10
       self.angle = 70
+      self.width = width
+      self.height = height
 
     def calc(self):
       self.w = -1 * self.g
       self.u = self.t.cross(self.w)
       self.u = self.u / self.u.magnitude
       self.v = self.w.cross(self.u)
+      self.t = abs(self.n) * math.tan(math.radians(self.angle / 2))
+      self.b = -self.t
+      self.r = self.t * self.width / self.height
+      self.l = -self.r
 
     def eSet(self, x, y, z):
       self.e = Vector(x, y, z)

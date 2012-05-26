@@ -61,11 +61,11 @@ if __name__ == '__main__':
             [1,2,3],
             [4,5,6],
             [7,8,9])
-    print x
-    print x.transpose()
+    print (x)
+    print (x.transpose())
     y = Matrix(
             [1,2],
             [3,4],
             [5,6])
-    print y
-    print "\n" + y.transpose().__str__()
+    print (y)
+    print ("\n" + y.transpose().__str__())
