@@ -19,10 +19,10 @@ class Camera(object):
       self.u = self.t.cross(self.w)
       self.u = self.u / self.u.magnitude
       self.v = self.w.cross(self.u)
-      self.t = abs(self.n) * math.tan(math.radians(self.angle / 2))
-      self.b = -self.t
-      self.r = self.t * self.width / self.height
-      self.l = -self.r
+      self.top = abs(self.n) * math.tan(math.radians(self.angle / 2))
+      self.bot = -self.top
+      self.rit = self.top * self.width / self.height
+      self.lef = -self.rit
 
     def eSet(self, x, y, z):
       self.e = Vector(x, y, z)
