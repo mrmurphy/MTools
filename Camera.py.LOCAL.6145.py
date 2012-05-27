@@ -1,6 +1,6 @@
 # A quick camera class to store the values needed to represent a
 # camera in this pipeline.
-from MTools.Vector import Vector
+from Vector import Vector
 import math
 
 class Camera(object):
@@ -75,10 +75,10 @@ class Camera(object):
 
 if __name__ == '__main__':
   c = Camera()
-  print(c.e)
+  print c.e
   c.xPosSet(-2)
-  print(c.e)
+  print c.e
   c.nudgePos(-1, 4, 4)
-  print(c.e)
+  print c.e
   c.gSet(1,1,1)
-  print(c.g)
+  print c.g

@@ -1,5 +1,5 @@
 # A class to make working with points very easy.
-from Vector import Vector
+from MTools.Vector import Vector
 
 class Point(Vector):
     def __init__(self, x, y, z):
