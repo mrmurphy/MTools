@@ -3,6 +3,7 @@
 # Heavily referenced from: http://www.math.okstate.edu/~ullrich/PyPlug/
 import math
 
+
 class Vector(object):
     def __init__(self, *indata):
         # This is to check if the args are a list, or just values.
@@ -21,22 +22,21 @@ class Vector(object):
             self.x = self.data[0]
             self.y = self.data[1]
             self.z = self.data[2]
-            if (len(self.data)  == 4):
+            if (len(self.data) == 4):
                 self.h = self.data[3]
-
 
     def __repr__(self):
         return self.__str__()
         # return repr(self.data)
 
     def __add__(self, other):
-        result = []
-        for i in range(len(self.data)):
-            result.append(self.data[i] + other.data[i])
-        return Vector(result)
+        return Vector([self.data[i] + other.data[i] for i in range(len(self.data))])
+
+    def __sub__(self, other):
+        return Vector([self.data[i] - other.data[i] for i in range(len(self.data))])
 
     def __getitem__(self, index):
-            return self.data[index]
+        return self.data[index]
 
     def __len__(self):
         return len(self.data)
@@ -50,7 +50,7 @@ class Vector(object):
     def __div__(self, other):
         if (other == 0):
             other = 1
-        return Vector([(x / other) for x in self.data])        
+        return Vector([(x / other) for x in self.data])
 
     def __eq__(self, other):
         if (len(self.data) != len(other.data)):

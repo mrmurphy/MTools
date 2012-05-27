@@ -28,7 +28,7 @@ class Matrix(MVector):
         # The matricies must have equal rows and columns.
         # Returns a matrix with the result.
         result = []
-        # If the other is a vector, just take the dot product of each 
+        # If the other is a vector, just take the dot product of each
         # row in self with the vector.
         if (type(other) == type(MVector())) or \
             (type(other) == type(Point(0, 0, 0))):
@@ -61,14 +61,14 @@ class Matrix(MVector):
 if __name__ == '__main__':
     # Test cases.
     x = Matrix(
-            [1,2,3],
-            [4,5,6],
-            [7,8,9])
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9])
     print(x)
     print((x.transpose()))
     y = Matrix(
-            [1,2],
-            [3,4],
-            [5,6])
+            [1, 2],
+            [3, 4],
+            [5, 6])
     print(y)
     print(("\n" + y.transpose().__str__()))
