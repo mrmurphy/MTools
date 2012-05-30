@@ -9,18 +9,17 @@ class Camera(object):
     def __init__(self, width=800, height=600):
         self.e = Vector(0, 0, 0)
         self.g = Vector(0, 0, -1)
-        self.t = Vector(0, 1, 0)
-        self.n = 1
+        self.t = Vector(0, 100, 0)
+        self.n = 2
         self.f = 10
-        self.angle = 70
+        self.angle = 90
         self.width = width
         self.height = height
         self.calc()
 
     def calc(self):
         self.w = -1 * self.g
-        self.u = self.t.cross(self.w)
-        self.u = self.u / self.u.magnitude
+        self.u = self.t.cross(self.w).normalize()
         self.v = self.w.cross(self.u)
         self.top = abs(self.n) * math.tan(math.radians(self.angle / 2))
         self.bot = -self.top
@@ -81,6 +80,12 @@ class Camera(object):
         result = (self.w * -self.n) + (self.u * xCam) + (self.v * yCam)
         result.normalize()
         return Ray(self.e, result)
+
+    def lookAt(self, x, y, z):
+        point = Vector(x, y, z)
+        direction = point - self.e
+        self.gSet(direction.x, direction.y, direction.z)
+
 
 
 if __name__ == '__main__':

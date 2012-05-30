@@ -92,7 +92,7 @@ class Vector(object):
         return Vector(newX, newY, newZ)
 
     def normalize(self):
-        mag = self.magnitude
+        mag = float(self.magnitude)
         self.xSet(float(self.x / mag))
         self.ySet(float(self.y / mag))
         self.zSet(float(self.z / mag))
